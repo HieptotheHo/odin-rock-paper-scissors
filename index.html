@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        choices = ['rock', 'paper', 'scissors']
+
+const getComputerChoice = () => {
+    return choices[Math.floor(Math.random()*3-0)]
+} 
+
+var playerScore = 0;
+var computerScore = 0;
+
+
+
+const playRound = (playerChoice, computerChoice) => {
+    
+
+
+    if(playerChoice === computerChoice) return 'tie';
+    else {
+        if(playerChoice==='rock') {
+            if(computerChoice==='paper') return 'computer'
+            else return 'player'
+        } else if (playerChoice ==='paper') {
+            if(computerChoice==='scissors') return 'computer'
+            else return 'player'
+
+        } else if (playerChoice ==='scissors') {
+            if(computerChoice==='rock') return 'computer'
+            else return 'player'
+        }
+    }
+}
+
+
+const playGame = (rounds) =>{
+    let playerChoice = prompt("rock, paper, scissors?");
+
+    while(rounds>0) {
+
+        console.log('hey')
+        let playerChoice = prompt("rock, paper, scissors?");
+        
+        let computerChoice = getComputerChoice();
+        console.log(computerChoice)
+        let roundResult = playRound(playerChoice,computerChoice);
+        if(!(roundResult==='tie')) {
+            if(roundResult==='player') playerScore++;
+            else computerScore++;
+            rounds--;
+            console.log('wtf')
+            alert(`Player: ${playerChoice}\nComputer: ${computerChoice}\n`+roundResult==='tie'?'Tie! Start this round again.':roundResult==='player'?'Player Won!':'Computer Won!')
+        }
+    }
+    alert(`Final results:\nPlayer: ${playerScore}\nComputer: ${computerScore}\n`+ playerScore===computerScore?'Tie!':playerScore>computerScore?"Player Won!":"Computer Won!")
+}
+
+playGame(3);
+    </script>
+</body>
+</html>
